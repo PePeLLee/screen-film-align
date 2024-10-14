@@ -69,7 +69,7 @@
             // Wyświetl rozdzielczość
             document.getElementById('resolution-display').textContent = `Rozdzielczość: ${width} x ${height}`;
 
-            for (let i = 0; i < Math.min(width, height) / 16; i++) {
+            for (let i = 0; i < 10; i++) {
                 const rect = document.createElement('div');
                 rect.classList.add('rectangle');
                 rect.style.width = (width - (i+1) * 16) + 'px';
