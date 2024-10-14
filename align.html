@@ -2,7 +2,8 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
     <title>Koncentryczne Prostokąty</title>
     <style>
         body, html {
@@ -15,7 +16,11 @@
             align-items: center;
             background-color: #f5f5f5;
             position: relative;
-            overflow: hidden;
+            overflow: hidden;            
+            padding-top: env(safe-area-inset-top);   /* Użycie marginesu dla bezpiecznego obszaru */
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         .rectangle {
