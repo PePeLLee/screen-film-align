@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koncentryczne Kolory</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        .concentric {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            border-radius: 50%;
+            background: conic-gradient(
+                red 0deg, red 10deg,
+                orange 10deg, orange 20deg,
+                yellow 20deg, yellow 30deg,
+                green 30deg, green 40deg,
+                blue 40deg, blue 50deg,
+                indigo 50deg, indigo 60deg,
+                violet 60deg, violet 70deg,
+                red 70deg, red 80deg,
+                orange 80deg, orange 90deg,
+                yellow 90deg, yellow 100deg,
+                green 100deg, green 110deg,
+                blue 110deg, blue 120deg,
+                indigo 120deg, indigo 130deg,
+                violet 130deg, violet 140deg,
+                red 140deg, red 150deg
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="concentric"></div>
+</body>
+</html>
