@@ -13,36 +13,81 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000;
+            background-color: #f5f5f5;
             position: relative;
+            overflow: hidden;
         }
 
         .rectangle {
             position: absolute;
             background-color: transparent;
-            border: 5px solid;
-            box-sizing: border-box;
+            border: 0;
+        }
+
+        .full-screen-button {
+            position: absolute;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .full-screen-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
         }
     </style>
 </head>
 <body>
+    <button class="full-screen-button" id="fullscreen-btn" onclick="toggleFullScreen()">Włącz pełny ekran</button>
+
     <script>
         const body = document.body;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+        const colors = ['#FF6347', '#32CD32', '#1E90FF', '#FFD700', '#6A5ACD', '#FF8C00', '#20B2AA'];  // Mocniejsze, ale przyjemne kolory
+        let width = window.innerWidth;
+        let height = window.innerHeight;
 
-        const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'cyan'];
+        function drawRectangles() {
+            // Usuń istniejące prostokąty
+            document.querySelectorAll('.rectangle').forEach(rect => rect.remove());
 
-        for (let i = 0; i < Math.min(width, height) / 10; i++) {
-            const rect = document.createElement('div');
-            rect.classList.add('rectangle');
-            rect.style.width = (width - i * 10) + 'px';
-            rect.style.height = (height - i * 10) + 'px';
-            rect.style.top = (i * 5) + 'px';
-            rect.style.left = (i * 5) + 'px';
-            rect.style.borderColor = colors[i % colors.length];  // Kolory zmieniają się co 10px
-            body.appendChild(rect);
+            // Oblicz wymiary ekranu na nowo
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            for (let i = 0; i < 10; i++) {
+                const rect = document.createElement('div');
+                rect.classList.add('rectangle');
+                rect.style.width = (width - (i+1) * 20) + 'px';
+                rect.style.height = (height - (i+1) * 20) + 'px';
+                rect.style.top = (i * 10) + 'px';
+                rect.style.left = (i * 10) + 'px';
+                rect.style.border = '11px solid ' + colors[i % colors.length];  // Ramka 8px, co daje 16px szerokości koloru
+                body.appendChild(rect);
+            }
         }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(drawRectangles);  // Przeładuj obrazki po wejściu w pełny ekran
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Rysuj prostokąty przy załadowaniu strony
+        drawRectangles();
+
+        // Rysuj prostokąty na nowo po zmianie rozmiaru okna
+        window.onresize = drawRectangles;
     </script>
 </body>
 </html>
