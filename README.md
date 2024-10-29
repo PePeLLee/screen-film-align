@@ -1,1 +1,1 @@
-https://htmlpreview.github.io/?https://github.com/PePeLLee/screen-film-align/blob/main/align.html
+https://pepellee.github.io/screen-film-align/align.html
